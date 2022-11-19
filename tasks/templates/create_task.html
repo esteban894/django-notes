@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mb-3">
+<h1>Crear tarea</h1>
+  <form action="/create_task/" method="POST">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+      <input type="text" class="form-control task-create-title" name="{{form.title.name}}" placeholder="Título">
+    </div>
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" name="{{form.description.name}}" placeholder="Descripción">
+    </div>
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="{{form.important.name}}">
+      <label class="form-check-label">Importante</label>
+    </div>
+    <div class="mb-3 error-create-task">
+      {{error}}
+    </div>
+    <button>Guardar</button>
+  </form>
+</div>
+{% endblock %}
